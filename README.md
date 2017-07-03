@@ -5,8 +5,11 @@ Python 3 Chess Application
 Navigate to parent directory
 > \> python3 chess
 
+### Style Guide
+[PEP 8](https://www.python.org/dev/peps/pep-0008/)<br/>
 
-# Features
+
+## Features
 Base Game
 * Chess Board
 * Chess Pieces

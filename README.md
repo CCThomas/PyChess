@@ -11,7 +11,7 @@ Base Game
 * Chess Board
 * Chess Pieces
 * Move Chess Pieces to desired location
-> rook:B4
+1 rook:B4
 GUI
 * Draw all objects
 * Can move objects with mouse

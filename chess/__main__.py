@@ -5,4 +5,4 @@
 
 from chess import game
 
-game.start()
+game.dev_console()

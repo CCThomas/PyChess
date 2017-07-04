@@ -1,4 +1,4 @@
-# Chess
+# PyChess
 Python 3 Chess Application
 
 ## Run Application

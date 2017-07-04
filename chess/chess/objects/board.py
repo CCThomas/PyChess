@@ -1,4 +1,4 @@
-from chess.objects.pieces import Piece
+from chess.objects.pieces import *
 import os
 
 
@@ -14,14 +14,14 @@ class Board:
         ['A8', 'B8', 'C8', 'D8', 'E8', 'F8', 'G8', 'H8']
     ]
     board_piece = [
-        [Piece, Piece, Piece, Piece, Piece, Piece, Piece],
-        [Piece, Piece, Piece, Piece, Piece, Piece, Piece],
-        [Piece, Piece, Piece, Piece, Piece, Piece, Piece],
-        [Piece, Piece, Piece, Piece, Piece, Piece, Piece],
-        [Piece, Piece, Piece, Piece, Piece, Piece, Piece],
-        [Piece, Piece, Piece, Piece, Piece, Piece, Piece],
-        [Piece, Piece, Piece, Piece, Piece, Piece, Piece],
-        [Piece, Piece, Piece, Piece, Piece, Piece, Piece]
+        [None, None, None, None, None, None, None, None],
+        [None, None, None, None, None, None, None, None],
+        [None, None, None, None, None, None, None, None],
+        [None, None, None, None, None, None, None, None],
+        [None, None, None, None, None, None, None, None],
+        [None, None, None, None, None, None, None, None],
+        [None, None, None, None, None, None, None, None],
+        [None, None, None, None, None, None, None, None]
     ]
     board_text = [
         ['-', '-', '-', '-', '-', '-', '-', '-'],
@@ -45,34 +45,55 @@ class Board:
 
     def place_piece(self, piece, letter, number):
         if letter == 'A':
-            self.board_text[number][0] = piece
+            self.board_piece[number][0] = piece
         if letter == 'B':
-            self.board_text[number][1] = piece
+            self.board_piece[number][1] = piece
         if letter == 'C':
-            self.board_text[number][2] = piece
+            self.board_piece[number][2] = piece
         if letter == 'D':
-            self.board_text[number][3] = piece
+            self.board_piece[number][3] = piece
         if letter == 'E':
-            self.board_text[number][4] = piece
+            self.board_piece[number][4] = piece
         if letter == 'F':
-            self.board_text[number][5] = piece
+            self.board_piece[number][5] = piece
         if letter == 'G':
-            self.board_text[number][6] = piece
+            self.board_piece[number][6] = piece
         if letter == 'H':
-            self.board_text[number][7] = piece
+            self.board_piece[number][7] = piece
 
     def print_board(self):
         print('  A B C D E F G H')
         for row in range(0,8):
             print(row+1, end=' ')
             for column in range(0,8):
-                print(self.board_text[row][column], end=' ')
+                if self.board_piece[row][column] is not None:
+                    print(self.board_piece[row][column].get_name(), end=' ')
             print('')
 
+    def draw_board(self,canvas):
+        from chess.game import dimensions
+        for row in range(8):
+            for col in range(8):
+                if (row + col) % 2 == 0:
+                    canvas.create_rectangle(col * dimensions["cell_width"], row * dimensions['cell_height'], (col + 1) * dimensions['cell_width'],
+                                            (row + 1) * dimensions['cell_height'], fill='black')
+                if self.board_piece[row][col] is not None:
+                    print(str(col * dimensions["cell_width"]) + ' ' + str(row * dimensions['cell_height']))
+                    canvas.create_text(col * dimensions["cell_width"] + dimensions['piece_translation'], row * dimensions['cell_height'] + dimensions['piece_translation'],
+                                       text=self.board_piece[row][col].get_name(), font=('Helvetica',dimensions['piece_size']),
+                                       fill=self.board_piece[row][col].get_color(), activefill='green')
 
-class Player:
+    def init_player(self, color, number):
+        translate_pieces = 0
+        translate_pawns = 0
+        if number == 2:
+            translate_pieces = 7
+            translate_pawns = 5
 
-    def __init__(self, color):
+        self.place_piece(Rook(color), 'A', 0 + translate_pieces)
+
+    """
+    def init_player(self, color):
         self.color = color
         self.pieces = {
             'left_rook': Piece,
@@ -136,3 +157,4 @@ class Player:
         self.pieces['pawn_7'].set_position('G', 1 + translate_pawns)
         self.pieces['pawn_8'] = Pawn(self.color)
         self.pieces['pawn_8'].set_position('H', 1 + translate_pawns)
+        """

@@ -1,6 +1,5 @@
 def test_board():
-    from chess.objects.board import Board
-    from chess.objects.player import Player
+    from chess.objects.board import Board,Player
     my_board = Board()
     player_1 = Player('red')
     player_1.init_pieces("north")

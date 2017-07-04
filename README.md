@@ -1,7 +1,7 @@
 # PyChess
 Python 3 Chess Application
 
-# Version 0.0.0
+## Version 0.0.0
 A basic skelton structure has been created
 
 ## Run Application

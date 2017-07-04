@@ -14,7 +14,7 @@ Navigate to parent directory
 3. Write test for changes (if possible)
 4. Update Version Number
    1. Look [here](http://semver.org/) for help
-5. Update Readme
+5. Update Readme and other .md
 6. Merge Branch with Master
 
 ### Style Guide

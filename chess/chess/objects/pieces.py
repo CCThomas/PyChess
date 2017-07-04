@@ -6,6 +6,9 @@ class Piece:
         self.name = '-'
         self.color = color
 
+    def get_color(self):
+        return self.color
+
     def get_image_path(self):
         return self.image_path
 
@@ -24,6 +27,12 @@ class Piece:
 
     def get_number(self):
         return self.number
+
+    def on_enter(self, event):
+        print("Enter")
+
+    def on_leave(self, enter):
+        print("Enter")
 
 
 class Bishop(Piece):

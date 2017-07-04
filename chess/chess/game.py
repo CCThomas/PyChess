@@ -1,3 +1,11 @@
+dimensions = {
+    "geometry": "600x600",
+    "cell_width": 600/8,
+    "cell_height": 600/8,
+    "piece_size": int(600/8),
+    "piece_translation": int(600/8)*.5
+}
+
 def start():
     print('==========================')
     print('Python 3 Chess Application')

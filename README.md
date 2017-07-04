@@ -5,11 +5,19 @@ Python 3 Chess Application
 Navigate to parent directory
 > \> python3 chess
 
+## Contributing
+1. Branch from Master
+2. Make changes
+3. Write test for changes (if possible)
+4. Update Version Number
+> Look [here](http://semver.org/) for help
+5. Update Readme
+6. Merge Branch with Master
+
 ### Style Guide
 [PEP 8](https://www.python.org/dev/peps/pep-0008/)<br/>
 
-
-## Features
+### Features
 Base Game
 * Chess Board
 * Chess Pieces

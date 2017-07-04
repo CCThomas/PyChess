@@ -10,7 +10,7 @@ Navigate to parent directory
 2. Make changes
 3. Write test for changes (if possible)
 4. Update Version Number
-> Look [here](http://semver.org/) for help
+* Look [here](http://semver.org/) for help
 5. Update Readme
 6. Merge Branch with Master
 

@@ -1,6 +1,9 @@
 # PyChess
 Python 3 Chess Application
 
+# Version 0.0.0
+A basic skelton structure has been created
+
 ## Run Application
 Navigate to parent directory
 > \> python3 chess

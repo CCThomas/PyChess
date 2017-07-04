@@ -35,3 +35,8 @@ GUI
 AI
 * Create AI to play against
 * Add Difficulty to AI (Optional)
+
+
+## License
+This project is licensed under the terms of the MIT license.
+> [license](LICENSE.md)

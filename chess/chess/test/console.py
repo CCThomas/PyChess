@@ -33,6 +33,8 @@ def test_pieces():
     pieces.test_king()
     pieces.test_knight()
     pieces.test_pawn()
+    pieces.test_queen()
+    pieces.test_rook()
 
 def test_player():
     from chess.objects import player

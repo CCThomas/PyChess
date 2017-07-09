@@ -1,8 +1,0 @@
-Pieces
-
-Functions
-
-get_valid_moves()
--> returns a list of valid moves
-remove_invalid_moves()
--> removes all invalid moves to piece

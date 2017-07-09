@@ -28,13 +28,7 @@ def test_gui():
 
 def test_pieces():
     from chess.test import pieces
-    pieces.test_piece()
-    pieces.test_bishop()
-    pieces.test_king()
-    pieces.test_knight()
-    pieces.test_pawn()
-    pieces.test_queen()
-    pieces.test_rook()
+    pieces.test_pieces()
 
 def test_player():
     from chess.objects import player

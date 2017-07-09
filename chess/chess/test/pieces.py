@@ -5,10 +5,24 @@ from chess.objects import pieces
 from chess.test import func
 
 
+def test_pieces():
+    func.start_report('chess.objects.pieces')
+
+    test_piece()
+    test_bishop()
+    test_king()
+    test_knight()
+    test_pawn()
+    test_queen()
+    test_queen()
+
+    func.close_report('chess.objects.pieces')
+
+
 def test_piece():
     piece = pieces.Piece("orange")
 
-    func.start_report('chess.objects.pieces.Piece')
+    func.start_test_on('chess.objects.pieces.Piece')
 
     # Test Getters
     func.should_equal('chess.objects.pieces.Piece get_color()', piece.get_color(), 'orange')
@@ -58,13 +72,13 @@ def test_piece():
     func.should_equal('chess.objects.pieces.Piece convert_letter()', piece.convert_letter(), 8)
     func.should_equal('chess.objects.pieces.Piece get_number()', piece.get_number(), '8')
 
-    func.print_and_close_report()
+    func.print_and_restart_tracker()
 
 
 def test_bishop():
     bishop = pieces.Bishop("orange")
 
-    func.start_report('chess.objects.pieces.Bishop')
+    func.start_test_on('chess.objects.pieces.Bishop')
     bishop.set_position('D5')
 
     # Check Valid moves
@@ -83,13 +97,13 @@ def test_bishop():
     func.should_equal('chess.objects.pieces.Bishop is_move_valid("F7")', bishop.is_move_valid("F8"), False)
     func.should_equal('chess.objects.pieces.Bishop is_move_valid("H3")', bishop.is_move_valid("H3"), False)
 
-    func.print_and_close_report()
+    func.print_and_restart_tracker()
 
 
 def test_king():
     king = pieces.King("orange")
 
-    func.start_report('chess.objects.pieces.King')
+    func.start_test_on('chess.objects.pieces.King')
     king.set_position('D5')
 
     # Check Valid moves
@@ -111,13 +125,13 @@ def test_king():
     func.should_equal('chess.objects.pieces.King is_move_valid("G8")', king.is_move_valid("G8"), False)
     func.should_equal('chess.objects.pieces.King is_move_valid("H4")', king.is_move_valid("H4"), False)
 
-    func.print_and_close_report()
+    func.print_and_restart_tracker()
 
 
 def test_knight():
     knight = pieces.Knight("orange")
 
-    func.start_report('chess.objects.pieces.Knight')
+    func.start_test_on('chess.objects.pieces.Knight')
     knight.set_position('D5')
 
     # Check Valid moves
@@ -147,14 +161,14 @@ def test_knight():
     func.should_equal('chess.objects.pieces.Knight is_move_valid("F5")', knight.is_move_valid("F5"), False)
     func.should_equal('chess.objects.pieces.Knight is_move_valid("F7")', knight.is_move_valid("F7"), False)
 
-    func.print_and_close_report()
+    func.print_and_restart_tracker()
 
 
 def test_pawn():
     pawn_one = pieces.Pawn("orange", 1)
     pawn_two = pieces.Pawn("orange", 2)
 
-    func.start_report('chess.objects.pieces.Pawn')
+    func.start_test_on('chess.objects.pieces.Pawn')
     pawn_one.set_position('B2')
     pawn_two.set_position('B7')
 
@@ -199,13 +213,13 @@ def test_pawn():
     func.should_equal('chess.objects.pieces.Pawn Two is_move_valid("B3")', pawn_two.is_move_valid("B3"), False)
     func.should_equal('chess.objects.pieces.Pawn Two is_move_valid("A5")', pawn_two.is_move_valid("A5"), False)
 
-    func.print_and_close_report()
+    func.print_and_restart_tracker()
 
 
 def test_queen():
     queen = pieces.Queen("orange")
 
-    func.start_report('chess.objects.pieces.Queen')
+    func.start_test_on('chess.objects.pieces.Queen')
     queen.set_position('D5')
 
     # Check Valid moves
@@ -240,13 +254,13 @@ def test_queen():
     func.should_equal('chess.objects.pieces.Queen is_move_valid("H6")', queen.is_move_valid("H6"), False)
     func.should_equal('chess.objects.pieces.Queen is_move_valid("H8")', queen.is_move_valid("H8"), False)
 
-    func.print_and_close_report()
+    func.print_and_restart_tracker()
 
 
 def test_rook():
     rook = pieces.Rook("orange")
 
-    func.start_report('chess.objects.pieces.Rook')
+    func.start_test_on('chess.objects.pieces.Rook')
     rook.set_position('D5')
 
     # Check Valid moves
@@ -269,4 +283,4 @@ def test_rook():
     func.should_equal('chess.objects.pieces.Rook is_move_valid("H6")', rook.is_move_valid("H6"), False)
     func.should_equal('chess.objects.pieces.Rook is_move_valid("H8")', rook.is_move_valid("H8"), False)
 
-    func.print_and_close_report()
+    func.print_and_restart_tracker()

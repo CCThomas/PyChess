@@ -16,6 +16,8 @@ def start():
 # Developer Mode
 #
 def dev_quit():
+    from chess.io import output
+    output.run_log("close")
     import sys
     sys.exit(0)
 

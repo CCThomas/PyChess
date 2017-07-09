@@ -202,15 +202,71 @@ def test_pawn():
     func.print_and_close_report()
 
 
-def test_():
-    _ = pieces._("orange")
+def test_queen():
+    queen = pieces.Queen("orange")
 
-    func.start_report('chess.objects.pieces.')
-    _.set_position('D5')
+    func.start_report('chess.objects.pieces.Queen')
+    queen.set_position('D5')
 
     # Check Valid moves
-    func.should_equal('chess.objects.pieces. is_move_valid("")', _.is_move_valid(""), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("A2")', queen.is_move_valid("A2"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("A5")', queen.is_move_valid("A5"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("B3")', queen.is_move_valid("B3"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("B5")', queen.is_move_valid("B5"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("B7")', queen.is_move_valid("B7"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("D1")', queen.is_move_valid("D1"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("D3")', queen.is_move_valid("D3"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("D6")', queen.is_move_valid("D6"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("D8")', queen.is_move_valid("D8"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("E4")', queen.is_move_valid("E4"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("E5")', queen.is_move_valid("E5"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("F7")', queen.is_move_valid("F7"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("G2")', queen.is_move_valid("G2"), True)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("H5")', queen.is_move_valid("H5"), True)
+
+
+
     # Check InValid Moves
-    func.should_equal('chess.objects.pieces. is_move_valid("")', _.is_move_valid(""), False)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("A4")', queen.is_move_valid("A4"), False)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("B2")', queen.is_move_valid("B2"), False)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("B6")', queen.is_move_valid("B6"), False)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("B8")', queen.is_move_valid("B8"), False)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("C2")', queen.is_move_valid("C2"), False)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("E7")', queen.is_move_valid("E7"), False)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("F7")', queen.is_move_valid("F8"), False)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("F2")', queen.is_move_valid("F2"), False)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("G4")', queen.is_move_valid("G4"), False)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("H3")', queen.is_move_valid("H3"), False)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("H6")', queen.is_move_valid("H6"), False)
+    func.should_equal('chess.objects.pieces.Queen is_move_valid("H8")', queen.is_move_valid("H8"), False)
+
+    func.print_and_close_report()
+
+
+def test_rook():
+    rook = pieces.Rook("orange")
+
+    func.start_report('chess.objects.pieces.Rook')
+    rook.set_position('D5')
+
+    # Check Valid moves
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("A5")', rook.is_move_valid("A5"), True)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("B5")', rook.is_move_valid("B5"), True)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("D1")', rook.is_move_valid("D1"), True)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("D3")', rook.is_move_valid("D3"), True)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("D6")', rook.is_move_valid("D6"), True)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("D8")', rook.is_move_valid("D8"), True)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("E5")', rook.is_move_valid("E5"), True)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("H5")', rook.is_move_valid("H5"), True)
+    # Check InValid Moves
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("A4")', rook.is_move_valid("A4"), False)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("B8")', rook.is_move_valid("B8"), False)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("C2")', rook.is_move_valid("C2"), False)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("C6")', rook.is_move_valid("C6"), False)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("E7")', rook.is_move_valid("E7"), False)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("F2")', rook.is_move_valid("F2"), False)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("G4")', rook.is_move_valid("G4"), False)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("H6")', rook.is_move_valid("H6"), False)
+    func.should_equal('chess.objects.pieces.Rook is_move_valid("H8")', rook.is_move_valid("H8"), False)
 
     func.print_and_close_report()

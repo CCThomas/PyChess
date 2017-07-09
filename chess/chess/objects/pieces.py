@@ -136,7 +136,15 @@ class Queen(Piece):
         self.position = None
 
     def is_move_valid(self, move):
-        pass
+        if self.get_letter() == move[0] and self.get_number() != move[1]:
+            return True
+        elif self.get_letter() != move[0] and self.get_number() == move[1]:
+            return True
+        elif abs(self.convert_letter() - Piece.letter_converter[move[0]]) \
+                == abs(int(self.get_number()) - int(move[1])):
+            return True
+        else:
+            return False
 
 
 class Rook(Piece):

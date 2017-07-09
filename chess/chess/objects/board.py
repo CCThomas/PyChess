@@ -1,8 +1,40 @@
 from chess.objects.pieces import *
-import os
+from chess.io import output
+
+"""
+    A    B    C    D    E    F    G    H
+  -----------------------------------------
+1 | rr | rk | rb | rK | rq | rb | rk | rr |
+  -----------------------------------------
+2 | rp | rp | rp | rp | rP | rP | rP | rP |
+  -----------------------------------------
+3 | -- | -- | -- | -- | -- | -- | -- | -- |
+  -----------------------------------------
+4 | -- | -- | -- | -- | -- | -- | -- | -- |
+  -----------------------------------------
+5 | -- | -- | -- | -- | -- | -- | -- | -- |
+  -----------------------------------------
+6 | -- | -- | -- | -- | -- | -- | -- | -- |
+  -----------------------------------------
+7 | bp | bp | bp | bp | bp | bp | bp | bp |
+  -----------------------------------------
+8 | br | bk | bb | bK | bq | bB | bk | br |
+  -----------------------------------------
+
+"""
 
 
 class Board:
+    letter_converter = {
+        "A": 1,
+        "B": 2,
+        "C": 3,
+        "D": 4,
+        "E": 5,
+        "F": 6,
+        "G": 7,
+        "H": 8,
+    }
     board_reference = [
         ['A1', 'B2', 'C1', 'D1', 'E1', 'F1', 'G1', 'H1'],
         ['A2', 'B2', 'C2', 'D2', 'E2', 'F2', 'G2', 'H2'],
@@ -35,62 +67,50 @@ class Board:
     ]
 
     def __init__(self):
-        print("Chess Board Created")
-        current_path = os.path.dirname(__file__)
-        self.image_path = os.path.join(current_path, '../resources/images/board/board.png')
-        self.board_text = Board.board_text
+        output.run_log('write', "Chess Board Created")
+        self.board_piece = Board.board_piece
 
     def get_image_path(self):
         return self.image_path
 
     def place_piece(self, piece, letter, number):
-        if letter == 'A':
-            self.board_piece[number][0] = piece
-        if letter == 'B':
-            self.board_piece[number][1] = piece
-        if letter == 'C':
-            self.board_piece[number][2] = piece
-        if letter == 'D':
-            self.board_piece[number][3] = piece
-        if letter == 'E':
-            self.board_piece[number][4] = piece
-        if letter == 'F':
-            self.board_piece[number][5] = piece
-        if letter == 'G':
-            self.board_piece[number][6] = piece
-        if letter == 'H':
-            self.board_piece[number][7] = piece
+        self.board_piece[Board.letter_converter[letter]][7] = piece
 
     def print_board(self):
-        print('  A B C D E F G H')
-        for row in range(0,8):
-            print(row+1, end=' ')
-            for column in range(0,8):
-                if self.board_piece[row][column] is not None:
-                    print(self.board_piece[row][column].get_name(), end=' ')
-            print('')
+        print('    A    B    C    D    E    F    G    H\n  |---------------------------------------|')
+        for row_num in range(8):
+            print(row_num, end=' | ')
+            for col_num in range(8):
+                if self.board_piece[row_num][col_num] is not None:
+                    print(self.board_piece[row_num][col_num].get_name(), end=' | ')
+                else:
+                    print('--', end=' | ')
+            print('\n  |---------------------------------------|')
 
-    def draw_board(self,canvas):
-        from chess.game import dimensions
-        for row in range(8):
-            for col in range(8):
-                if (row + col) % 2 == 0:
-                    canvas.create_rectangle(col * dimensions["cell_width"], row * dimensions['cell_height'], (col + 1) * dimensions['cell_width'],
-                                            (row + 1) * dimensions['cell_height'], fill='black')
-                if self.board_piece[row][col] is not None:
-                    print(str(col * dimensions["cell_width"]) + ' ' + str(row * dimensions['cell_height']))
-                    canvas.create_text(col * dimensions["cell_width"] + dimensions['piece_translation'], row * dimensions['cell_height'] + dimensions['piece_translation'],
-                                       text=self.board_piece[row][col].get_name(), font=('Helvetica',dimensions['piece_size']),
-                                       fill=self.board_piece[row][col].get_color(), activefill='green')
-
-    def init_player(self, color, number):
+    def init_player_pieces(self, color, number):
         translate_pieces = 0
         translate_pawns = 0
         if number == 2:
             translate_pieces = 7
             translate_pawns = 5
 
-        self.place_piece(Rook(color), 'A', 0 + translate_pieces)
+        self.place_piece(Rook(color),   'A', 0 + translate_pieces)
+        self.place_piece(Knight(color), 'B', 0 + translate_pieces)
+        self.place_piece(Bishop(color), 'C', 0 + translate_pieces)
+        self.place_piece(King(color),   'D', 0 + translate_pieces)
+        self.place_piece(Queen(color),  'E', 0 + translate_pieces)
+        self.place_piece(Bishop(color), 'F', 0 + translate_pieces)
+        self.place_piece(Knight(color), 'G', 0 + translate_pieces)
+        self.place_piece(Rook(color),   'H', 0 + translate_pieces)
+        self.place_piece(Pawn(color),   'A', 1 + translate_pawns)
+        self.place_piece(Pawn(color),   'B', 1 + translate_pawns)
+        self.place_piece(Pawn(color),   'C', 1 + translate_pawns)
+        self.place_piece(Pawn(color),   'D', 1 + translate_pawns)
+        self.place_piece(Pawn(color),   'E', 1 + translate_pawns)
+        self.place_piece(Pawn(color),   'F', 1 + translate_pawns)
+        self.place_piece(Pawn(color),   'G', 1 + translate_pawns)
+        self.place_piece(Pawn(color),   'H', 1 + translate_pawns)
+
 
     """
     def init_player(self, color):

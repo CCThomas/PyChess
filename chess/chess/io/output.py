@@ -11,4 +11,4 @@ def run_log(cmd,*argv):
         run_log_path = os.path.join(current_path, 'logs/run_log')
         run_log_file = open(run_log_path, 'w')
     elif cmd == 'write':
-        run_log_file.write(argv[0])
+        run_log_file.write(argv[0] + '\n')

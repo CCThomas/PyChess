@@ -14,7 +14,7 @@ def test_pieces():
     test_knight()
     test_pawn()
     test_queen()
-    test_queen()
+    test_rook()
 
     func.close_report('chess.objects.pieces')
 

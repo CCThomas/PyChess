@@ -60,7 +60,8 @@ class Piece:
         valid_moves = []
         for row_num in range(8):
             for col_num in range(8):
-                if self.is_move_valid(Piece.board_reference[row_num][col_num]):
+                if self.is_move_valid(Piece.board_reference[row_num][col_num])\
+                   and Piece.board_reference[row_num][col_num] != self.position:
                     valid_moves.append(Piece.board_reference[row_num][col_num])
         return valid_moves
 

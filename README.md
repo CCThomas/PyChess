@@ -1,8 +1,12 @@
 # PyChess
 Python 3 Chess Application
 
-## Version 0.0.0
-A basic skelton structure has been created
+## Version 0.1.0
+Features
+* Chess Pieces along with Unit Tests created
+* Board Created (No Proper Tests Created)
+* Ability to correctly move pieces Implemented
+* Two Player Game Implemented
 
 ## Run Application
 Navigate to parent directory
@@ -21,16 +25,26 @@ Navigate to parent directory
 [PEP 8](https://www.python.org/dev/peps/pep-0008/)<br/>
 
 ### Features
+
+#### TODO
+General
+* Document Code
+* Make Executabel
+* (Optional) Find Actual Test Suite
+
 Base Game
-* Chess Board
-* Chess Pieces
-* Move Chess Pieces to desired location
-  * rook:B4
-  
+* Add ability for Pawn to Attack
+* Add ability for pawn to turn into a taken piece, when it has reach opposing side of board
+* Add functionality to check if King is in 'Check'
+   * (Optional) Include message to player that King is in 'Check'
+* Add check to make sure a player can not willingly put themselves, or leave themselves, in 'Checkmate'
+* Write Unit Test for Board
+
+#### Future
 GUI
 * Draw all objects
 * Can move objects with mouse
-* Board shows you where each piece can go on hover
+* Board shows you where each piece can move, on hover
 
 AI
 * Create AI to play against

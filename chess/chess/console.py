@@ -1,13 +1,25 @@
+dimensions = {
+    "geometry": "600x600",
+    "cell_width": 600/8,
+    "cell_height": 600/8,
+    "piece_size": int(600/8),
+    "piece_translation": int(600/8)*.5
+}
+
 def start():
     print('==========================')
     print('Python 3 Chess Application')
     print('==========================')
+    from chess.game import play
+    play.init_game()
 
 
 #
 # Developer Mode
 #
 def dev_quit():
+    from chess.io import output
+    output.run_log("close")
     import sys
     sys.exit(0)
 
@@ -23,6 +35,7 @@ def dev_usage():
 
 
 commands = {
+    'start': start,
     'help': dev_usage,
     'quit': dev_quit,
     'test': dev_test

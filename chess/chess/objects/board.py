@@ -1,5 +1,6 @@
 from chess.objects.pieces import *
 from chess.io import output
+
 # import numpy
 
 """
@@ -72,89 +73,17 @@ class Board:
         output.run_log('write', "Chess Board Created")
         self.board_piece = Board.board_piece
         self.players = {}
-        self.taken_pieces = {}
-    """
-    def is_reference_on_board(self, move_to):
-        for row_num in range(8):
-            for col_num in range(8):
-                if self.board_reference[row_num][col_num] == move_to:
-                    return True
-        return False
+        self.taken_pieces = {1: [], 2: []}
 
-    def is_piece_on_board(self, piece_name):
-        for row_num in range(8):
-            for col_num in range(8):
-                if self.board_piece[row_num][col_num] is not None \
-                        and self.board_piece[row_num][col_num].get_name() == piece_name:
-                    return True
-        return False
-
-    def can_get_to(self, piece_name, row_num, col_num, move_to):
-        next_letter = next_number = None
-        if Board.letter_converter[piece_name[0]] == row_num:
-            pass
-        elif Board.letter_converter[piece_name[0]] < row_num:
-            next_letter = Board.letter_converter[piece_name[0]] - 1
-        elif Board.letter_converter[piece_name[0]] > row_num:
-            next_letter = Board.letter_converter[piece_name[0]] + 1
-
-        if next_number == col_num:
-            pass
-        elif next_number < col_num:
-            next_number = Board.letter_converter[piece_name[0]] - 1
-        elif next_number > col_num:
-            next_number = Board.letter_converter[piece_name[0]] + 1
-        next_spot = str(next_letter) + str(next_number)
-        if next_spot == move_to:
-            return True
-        elif self.board_piece[next_number][next_letter] is None:
-            self.can_get_to(piece_name, next_letter, next_number, move_to)
-        else:
-            return False
-
-    def can_piece_make_move(self, piece_name, move_to):
-        for row_num in range(8):
-            for col_num in range(8):
-                if self.board_piece[row_num][col_num] is not None \
-                        and self.board_piece[row_num][col_num].get_name() == piece_name:
-                    if move_to in self.board_piece[row_num][col_num].get_valid_moves():
-                        if self.board_piece[Board.letter_mapper[move_to[0]]][move_to[1]].get_letter != piece_name[0]:
-                            if not self.board_piece[row_num][col_num].get_need_clear_path():
-                                return self.can_get_to(piece_name, row_num, col_num, move_to)
-        return False
-
-    def move_piece(self, piece_name, move_to):
-        for row_num in range(8):
-            for col_num in range(8):
-                if self.board_piece[row_num][col_num].get_name() == piece_name:
-                    self.place_piece(self.board_piece[row_num][col_num], move_to[0], int(move_to[1]))
-    
-    def place_piece(self, piece, letter, number):
-        if piece.get_position() is not None:
-            self.board_piece[piece.get_number()][piece.get_letter()] = None
-        piece.set_position(letter + str(number))
-        self.board_piece[number][Board.letter_mapper[letter]] = piece
-
-    def open_spots(self):
-        open_spot = []
-        for row_num in range(8):
-            for col_num in range(8):
-                if self.board_piece[row_num][col_num] is not None:
-                    open_spot.append(Board.board_reference[row_num][col_num])
-    """
-
+    # Called External to Program
     def move_piece(self, piece_name, piece_location, destination, player_number):
-        # Checks if piece_name is valid. if piece_name is at piece_location
-        # Checks if piece is Player's Piece
-        # Checks if move_to is on board
-        # Checks if piece can make the move from piece_location to move_to
-        tests = []
-
-        if not self.is_piece_at_location(piece_name, piece_location):
-            return "Piece Not At Location"
-        if not self.is_players_piece(piece_name, player_number):
+        if self.get_piece(piece_location[0], piece_location[1]) is None:
+            return "No Piece At Location"
+        if piece_name[0] != self.get_player_color(player_number)[0]:
             return "Not Player's Piece"
-        if not self.is_location_on_board(destination):
+        if self.get_piece(piece_location[0], piece_location[1]).get_name() != piece_name:
+            return "Piece Not At Location"
+        if destination[0] not in self.letter_mapper or destination[1] not in self.number_mapper:
             return "Location Not On Board"
         response = self.can_piece_make_move(piece_location, destination, player_number)
         if response != "True":
@@ -172,46 +101,11 @@ class Board:
         self.board_piece[Board.letter_mapper[piece_location[0]]][Board.number_mapper[piece_location[1]]] = None
         piece.set_position(destination)
 
-    def get_number_mapper_key(self, value):
-        for key in Board.number_mapper:
-            if Board.number_mapper[key] == value:
-                return key
-
-    def get_letter_mapper_key(self, value):
-        for key in Board.letter_mapper:
-            if Board.letter_mapper[key] == value:
-                return key
-
-    def check_if_path_is_clear(self, piece_location, destination):
-        new_location = piece_location
-        if Board.letter_mapper[new_location[0]] < Board.letter_mapper[destination[0]]:
-            new_letter_num = Board.letter_mapper[new_location[0]] + 1
-            new_location[0] = Board.get_letter_mapper_key(new_letter_num)
-        elif Board.letter_mapper[new_location[0]] > Board.letter_mapper[destination[0]]:
-            new_letter_num = Board.letter_mapper[new_location[0]] - 1
-            new_location[0] = Board.get_letter_mapper_key(new_letter_num)
-
-        if Board.number_mapper[new_location[1]] < Board.number_mapper[destination[1]]:
-            new_letter_num = Board.number_mapper[new_location[1]] + 1
-            new_location[1] = Board.number_mapper(new_letter_num)
-        elif Board.number_mapper[new_location[1]] > Board.number_mapper[destination[1]]:
-            new_letter_num = Board.number_mapper[new_location[1]] - 1
-            new_location[1] = Board.get_number_mapper_key(new_letter_num)
-
-        if new_location == destination:
-            return True
-        elif self.board_piece[Board.letter_mapper[new_location[0]]][Board.number_mapper[new_location[1]]] is None:
-            return self.check_if_path_is_clear(new_location, destination)
-        else:
-            return False
-
     def can_piece_make_move(self, piece_location, destination, player_number):
-        piece = self.board_piece[Board.letter_mapper[piece_location[0]]][Board.number_mapper[piece_location[1]]]
-        print("Piece Name: " + piece.get_name())
-        print("Piece Loca: " + piece.get_position())
+        piece = self.get_piece(piece_location[0], piece_location[1])
         valid_moves = piece.get_valid_moves()
         if destination in valid_moves:
-            piece_dest = self.board_piece[Board.letter_mapper[destination[0]]][Board.number_mapper[destination[1]]]
+            piece_dest = self.get_piece(destination[0], destination[1])
             if piece_dest is None or piece_dest.get_name()[0] != piece.get_name()[0]:
                 if not piece.get_need_clear_path() or self.check_if_path_is_clear(piece_location, destination):
                     return "True"
@@ -225,26 +119,45 @@ class Board:
                 valid_moves_string = valid_moves_string + ' ' + move
             return "This Piece Can Not Make That Move. Valid Moves As Follows\n" + valid_moves_string
 
-    def is_location_on_board(self, location):
-        if location[0] in Board.letter_mapper and location[1] in Board.number_mapper:
+    def check_if_path_is_clear(self, piece_location, destination):
+
+        def get_number_mapper_key(value) -> str:
+            for key in self.number_mapper:
+                if self.number_mapper[key] == value:
+                    return str(key)
+
+        def get_letter_mapper_key(value) -> str:
+            for key in self.letter_mapper:
+                if self.letter_mapper[key] == value:
+                    return str(key)
+
+        new_location = piece_location
+        if self.letter_mapper[new_location[0]] < self.letter_mapper[destination[0]]:
+            new_letter_num = self.letter_mapper[new_location[0]] + 1
+            new_location = get_letter_mapper_key(new_letter_num) + new_location[1]
+        elif self.letter_mapper[new_location[0]] > self.letter_mapper[destination[0]]:
+            new_letter_num = Board.letter_mapper[new_location[0]] - 1
+            new_location = get_letter_mapper_key(new_letter_num) + new_location[1]
+
+        if self.number_mapper[new_location[1]] < self.number_mapper[destination[1]]:
+            new_letter_num = Board.number_mapper[new_location[1]] + 1
+            new_location = new_location[0] + get_number_mapper_key(new_letter_num)
+        elif self.number_mapper[new_location[1]] > self.number_mapper[destination[1]]:
+            new_letter_num = self.number_mapper[new_location[1]] - 1
+            new_location = new_location[0] + get_number_mapper_key(new_letter_num)
+
+        if new_location == destination:
             return True
+        elif self.board_piece[Board.letter_mapper[new_location[0]]][Board.number_mapper[new_location[1]]] is None:
+            return self.check_if_path_is_clear(new_location, destination)
         else:
             return False
 
-    def is_players_piece(self, piece_name, player_number):
-        if piece_name[0] == self.get_player_color(player_number)[0]:
-            return True
-        else:
-            return False
-
-    def is_piece_at_location(self, piece_name, piece_location):
-        if self.board_piece[Board.letter_mapper[piece_location[0]]][Board.number_mapper[piece_location[1]]].get_name() == piece_name:
-            return True
-        else:
-            return False
+    def get_piece(self, number, letter):
+        return self.board_piece[Board.letter_mapper[number]][Board.number_mapper[letter]]
 
     def place_piece(self, piece, letter, number):
-        piece.set_position(letter+number)
+        piece.set_position(letter + number)
         self.board_piece[Board.letter_mapper[letter]][Board.number_mapper[number]] = piece
 
     def print_board(self):
@@ -294,6 +207,9 @@ class Board:
     def get_player_color(self, player_number):
         return self.players[player_number]
 
+    def init_board(self):
+        self.board_piece = Board.board_piece
+
     def init_player_pieces(self, color, number):
         self.players[number] = color
 
@@ -303,14 +219,14 @@ class Board:
             translate_pieces = 7
             translate_pawns = 5
 
-        self.place_piece(Rook(color),   'A', str(1 + translate_pieces))
+        self.place_piece(Rook(color), 'A', str(1 + translate_pieces))
         self.place_piece(Knight(color), 'B', str(1 + translate_pieces))
         self.place_piece(Bishop(color), 'C', str(1 + translate_pieces))
-        self.place_piece(King(color),   'D', str(1 + translate_pieces))
-        self.place_piece(Queen(color),  'E', str(1 + translate_pieces))
+        self.place_piece(King(color), 'D', str(1 + translate_pieces))
+        self.place_piece(Queen(color), 'E', str(1 + translate_pieces))
         self.place_piece(Bishop(color), 'F', str(1 + translate_pieces))
         self.place_piece(Knight(color), 'G', str(1 + translate_pieces))
-        self.place_piece(Rook(color),   'H', str(1 + translate_pieces))
+        self.place_piece(Rook(color), 'H', str(1 + translate_pieces))
         self.place_piece(Pawn(color, number), 'A', str(2 + translate_pawns))
         self.place_piece(Pawn(color, number), 'B', str(2 + translate_pawns))
         self.place_piece(Pawn(color, number), 'C', str(2 + translate_pawns))

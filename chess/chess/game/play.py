@@ -30,15 +30,20 @@ def move(move_to, player_turn):
 # move bp A7 A6
 
 
-def init_game():
+def init_game(): 
     global board
     board = Board()
+    board.init_board()
     board.init_player_pieces('red', 1)
     board.init_player_pieces('blue', 2)
 
+    board.move_piece("rp","E2","E4",1)
+    board.move_piece("bp","D7","D6",2)
+    board.move_piece("rb","F1","B5",1)
+
     counter = 0
     previous_command = None
-    player_turn = 1
+    player_turn = 2
     while True:
         counter = counter + 1
         print("Counter: " + str(counter))

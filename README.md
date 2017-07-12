@@ -37,6 +37,10 @@ Base Game
 * Write Unit Test for Board
 
 #### Future
+General
+* Add new Games
+  * Checkers
+
 GUI
 * Draw all objects
 * Can move objects with mouse

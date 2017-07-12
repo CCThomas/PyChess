@@ -10,6 +10,8 @@ def start():
     print('==========================')
     print('Python 3 Chess Application')
     print('==========================')
+    from chess.game import play
+    play.init_game()
 
 
 #
@@ -33,6 +35,7 @@ def dev_usage():
 
 
 commands = {
+    'start': start,
     'help': dev_usage,
     'quit': dev_quit,
     'test': dev_test

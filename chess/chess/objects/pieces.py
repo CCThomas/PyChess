@@ -28,6 +28,7 @@ class Piece:
         self.name = '--'
         self.color = color
         self.position = None
+        self.need_clear_path = True
 
     def get_color(self):
         return self.color
@@ -49,6 +50,9 @@ class Piece:
         if self.position is None:
             return None
         return self.position[1]
+
+    def get_need_clear_path(self):
+        return self.need_clear_path
 
     def get_position(self):
         return self.position
@@ -72,6 +76,7 @@ class Bishop(Piece):
         self.name = 'b'
         self.color = color
         self.position = None
+        self.need_clear_path = True
 
     def is_move_valid(self, move):
         if abs(self.convert_letter() - Piece.letter_converter[move[0]]) \
@@ -87,6 +92,7 @@ class King(Piece):
         self.name = 'K'
         self.color = color
         self.position = None
+        self.need_clear_path = True
 
     def is_move_valid(self, move):
         if abs(self.convert_letter() - Piece.letter_converter[move[0]]) <= 1 \
@@ -102,6 +108,7 @@ class Knight(Piece):
         self.name = 'k'
         self.color = color
         self.position = None
+        self.need_clear_path = False
 
     def is_move_valid(self, move):
         if abs(self.convert_letter() - Piece.letter_converter[move[0]]) == 1 \
@@ -122,6 +129,7 @@ class Pawn(Piece):
         self.team = team
         self.position = None
         self.has_moved = False
+        self.need_clear_path = False
 
     def set_position(self, position):
         if self.position is None:
@@ -153,6 +161,7 @@ class Queen(Piece):
         self.name = 'Q'
         self.color = color
         self.position = None
+        self.need_clear_path = True
 
     def is_move_valid(self, move):
         if self.get_letter() == move[0] and self.get_number() != move[1]:
@@ -172,6 +181,7 @@ class Rook(Piece):
         self.name = 'r'
         self.color = color
         self.position = None
+        self.need_clear_path = True
 
     def is_move_valid(self, move):
         if self.get_letter() == move[0] and self.get_number() != move[1]:

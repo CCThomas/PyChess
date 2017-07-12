@@ -59,6 +59,10 @@ def init_game():
                 player_turn = 2
             elif success == "True" and player_turn == 2:
                 player_turn = 1
+            elif success == "Game Over":
+                print("Game Over")
+                print("Player " + player_turn + " Wins!")
+                break
             else:
                 print("Message: " + success)
         elif player_command == 'save':

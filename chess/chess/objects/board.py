@@ -89,17 +89,20 @@ class Board:
         if response != "True":
             return response
 
-        self.make_move(piece_location, destination, player_number)
-        return "True"
+        return_string = self.make_move(piece_location, destination, player_number)
+        return return_string
 
     def make_move(self, piece_location, destination, player_number):
         piece = self.board_piece[Board.letter_mapper[piece_location[0]]][Board.number_mapper[piece_location[1]]]
         piece_dest = self.board_piece[Board.letter_mapper[destination[0]]][Board.number_mapper[destination[1]]]
         if piece_dest is not None:
+            if piece_dest.get_name()[1] == "K":
+                return "Game Over"
             self.taken_pieces[player_number].append(piece_dest)
         self.board_piece[Board.letter_mapper[destination[0]]][Board.number_mapper[destination[1]]] = piece
         self.board_piece[Board.letter_mapper[piece_location[0]]][Board.number_mapper[piece_location[1]]] = None
         piece.set_position(destination)
+        return "True"
 
     def can_piece_make_move(self, piece_location, destination, player_number):
         piece = self.get_piece(piece_location[0], piece_location[1])

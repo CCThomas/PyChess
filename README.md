@@ -21,8 +21,12 @@ Navigate to parent directory
 [PEP 8](https://www.python.org/dev/peps/pep-0008/)<br/>
 
 ### Chess Rules
-#### Goal
-Capture the King. If the King is captured, Game Over!
+#### End Of Game
+* Win 
+  * Capture the King.
+  * If the King is captured, Game Over!
+* Draw
+  * Agreement
 #### Basics
 There are six different pieces in Chess, and can move as follows
 * King
@@ -73,6 +77,8 @@ GUI
 * Draw all objects
 * Can move objects with mouse
 * Board shows you where each piece can move, on hover
+* Add Language Support
+  * Due to Terminal Complications, Language support will not be implemented until GUI Version
 
 AI
 * Create AI to play against

@@ -3,7 +3,6 @@ from chess.io import output
 test_num = 0
 fail_num = 0
 
-
 def start_report(testing):
     output.pieces_test_log('open')
     output.pieces_test_log('write', "Starting Testing " + testing)

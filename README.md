@@ -1,13 +1,11 @@
-# PyChess
+# PyConsole
 Python 3 Chess Application
-[Spritesheet](https://www.raywenderlich.com/1223/python-tutorial-how-to-generate-game-tiles-with-python-imaging-library)
 
-## Version 0.1.0
-Can Play rough version of Game
+## Version 0.3.0
+Click [here](VERSION-NOTES.md) for details.
 
 ## Run Application
-Navigate to parent directory
-> \> python3 chess
+> \> python3 __main__.py
 
 ## Contributing
 1. Branch from Master
@@ -23,7 +21,7 @@ Navigate to parent directory
 
 ### Chess Rules
 #### End Of Game
-* Win 
+* Win
   * Capture the King.
   * If the King is captured, Game Over!
 * Draw
@@ -49,7 +47,7 @@ There are six different pieces in Chess, and can move as follows
 #### Special Rules
 * Promote the Pawn
   * If a pawn manages to make it to the other side of the board, it can be replaced with a friendly piece captured by the enemy team
-* en passant
+* En Passant
   * This occurs if a pawn moves two squares, landing adjacent to an enemy spawn.
   * On the opposing player's turn, they are allowed to capture the pawn as if it only moved one square
 * Castle
@@ -59,32 +57,9 @@ There are six different pieces in Chess, and can move as follows
     * There cannot be a piece between the King and Rook
     * The King cannot be, nor pass through check
 
-### Features
-
-#### TODO
-General
-* Draw Board
-* Movement for Chess Pieces
-* Implement Special Moves
-* Calculate Check
-* Chess Pieces Worth
-
-#### Future
-General
-* Add new Games
-  * Checkers
-
-GUI
-* Draw all objects
-* Can move objects with mouse
-* Board shows you where each piece can move, on hover
-* Add Language Support
-  * Due to Terminal Complications, Language support will not be implemented until GUI Version
-
-AI
-* Create AI to play against
-* Add Difficulty to AI (Optional)
-
+## Future Features & TODO
+Implement Special Moves<br/>
+Control Player's Turns
 
 ## License
 This project is licensed under the terms of the MIT license.

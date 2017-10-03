@@ -1,6 +1,9 @@
 # PyConsole
 Python 3 Chess Application
 
+## Version 0.3.0
+Click [here](RELEASE-NOTES.md) for details.
+
 ## Run Application
 > \> python3 __main__.py
 
@@ -58,9 +61,6 @@ There are six different pieces in Chess, and can move as follows
   * Fix: Pieces on field are not removed.
 * Control Player's Turns
 * Save and Load Game Functions
-
-## Version 0.3.0
-Click [here](RELEASE-NOTES.md) for details.
 
 ## License
 This project is licensed under the terms of the MIT license.

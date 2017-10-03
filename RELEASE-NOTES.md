@@ -1,4 +1,8 @@
 # Versions
+- [0.0.0](#version-000)
+- [0.1.0](#version-010)
+- [0.2.0](#version-020)
+- [0.3.0](#version-030)
 
 ## Version 0.0.0
 A basic skelton structure has been created

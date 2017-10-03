@@ -1,23 +1,8 @@
 # PyConsole
 Python 3 Chess Application
 
-## Version 0.3.0
-Click [here](VERSION-NOTES.md) for details.
-
 ## Run Application
 > \> python3 __main__.py
-
-## Contributing
-1. Branch from Master
-2. Make changes
-3. Write test for changes (if possible)
-4. Update Version Number
-   1. Look [here](http://semver.org/) for help
-5. Update Readme and other .md
-6. Merge Branch with Master
-
-### Style Guide
-[PEP 8](https://www.python.org/dev/peps/pep-0008/)<br/>
 
 ### Chess Rules
 #### End Of Game
@@ -58,8 +43,24 @@ There are six different pieces in Chess, and can move as follows
     * The King cannot be, nor pass through check
 
 ## Future Features & TODO
-Implement Special Moves<br/>
-Control Player's Turns
+* Change how the moves function works
+  * Return dict saying what move is being done
+    * Regular Move
+    * Special Move
+* Implement Special Moves
+  * Castling
+  * En Passant
+  * Promote the Pawn
+* Check(mate)
+  * Do not allow King to stay in Check
+  * Do not allow King to move into Check
+* New Game
+  * Fix: Pieces on field are not removed.
+* Control Player's Turns
+* Save and Load Game Functions
+
+## Version 0.3.0
+Click [here](RELEASE-NOTES.md) for details.
 
 ## License
 This project is licensed under the terms of the MIT license.

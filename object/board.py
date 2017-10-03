@@ -79,6 +79,7 @@ class Board:
         """Initialize Chess Board"""
         self.valid_moves = []
         self.piece_selected_pointer = None
+        self.piece_selected = None
         self.king_in_check = False
         self.hud = Hud()
 
@@ -88,13 +89,17 @@ class Board:
         my_y = int(y / dimensions["cell_height"])
         if my_y == 8:
             print('Hud pressed')
+        elif self.piece_selected is not None and self.piece_selected == self.board[my_x][my_y].get_piece():
+            self.valid_moves = []
+            self.piece_selected = None
         elif self.letter_mapper[my_x] + self.number_mapper[my_y] in self.valid_moves:
             piece = self.board[self.piece_selected_pointer[0]][self.piece_selected_pointer[1]].get_piece()
             self.board[self.piece_selected_pointer[0]][self.piece_selected_pointer[1]].set_piece(None)
             self.moving_piece(piece, self.letter_mapper[my_x], self.number_mapper[my_y])
+            self.piece_selected = None
             self.valid_moves = []
-
         elif self.board[my_x][my_y].get_piece() is not None:
+            self.piece_selected = self.board[my_x][my_y].get_piece()
             color_selected = self.board[my_x][my_y].get_piece().get_color()
             if color_selected == 'white':
                 self.hud.set_player_turn(1)
@@ -111,6 +116,7 @@ class Board:
                 else:
                     self.board[self.letter_converter[move[0][0]]][self.number_converter[move[0][1]]].set_state('target')
         else:
+            self.piece_selected = None
             self.hud.set_player_turn(0)
             self.valid_moves = []
 

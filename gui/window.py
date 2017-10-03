@@ -165,7 +165,6 @@ class StartWindow(Tk.Frame):
         self.title.pack(pady=50)
         self.new_game_button.pack()
         self.load_game_button.pack()
-        self.back_button.pack()
         self.quit_game_button.pack()
 
     def pack_forget(self):
@@ -173,7 +172,6 @@ class StartWindow(Tk.Frame):
         self.title.pack_forget()
         self.new_game_button.pack_forget()
         self.load_game_button.pack_forget()
-        self.back_button.pack_forget()
         self.quit_game_button.pack_forget()
 
 
@@ -205,8 +203,8 @@ class ChessBoard:
         def callback(event):
             """Method Called with ChessBoard is Clicked"""
             self.my_board.clicked(event.x, event.y)
-            self.my_board.draw(self.canvas)
             self.my_board.check_for_check()
+            self.my_board.draw(self.canvas)
 
         self.canvas.bind("<Button-1>", callback)
 

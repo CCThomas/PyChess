@@ -7,14 +7,14 @@ Click [here](RELEASE-NOTES.md) for details.
 ## Run Application
 > \> python3 __main__.py
 
-### Chess Rules
-#### End Of Game
+## Chess Rules
+### End Of Game
 * Win
   * Capture the King.
   * If the King is captured, Game Over!
 * Draw
   * Agreement
-#### Basics
+### Basics
 There are six different pieces in Chess, and can move as follows
 * King
   * The King can move one square in any direction
@@ -32,7 +32,7 @@ There are six different pieces in Chess, and can move as follows
   * It can only attack the square that is in the forward-diagonal position to it's location
   * If a pawn encounters a piece in the square in front of it, it can no longer move.
   * On a pawns first move, it can move two squares forwards instead of one, as long as it does not inferior with the previous rule.
-#### Special Rules
+### Special Rules
 * Promote the Pawn
   * If a pawn manages to make it to the other side of the board, it can be replaced with a friendly piece captured by the enemy team
 * En Passant

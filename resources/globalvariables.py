@@ -14,6 +14,6 @@ dimensions = {
     'coordinates_translation': int(600/50),
 }
 
-TITLE = "PyConsole"
+TITLE = "PyChess"
 VERSION_NUMBER = "0.3.0"
 CREDITS = "Created By: Christopher Thomas"

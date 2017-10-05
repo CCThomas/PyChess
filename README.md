@@ -45,24 +45,24 @@ There are six different pieces in Chess, and can move as follows
     * There cannot be a piece between the King and Rook
     * The King cannot be, nor pass through check
 
-## Future Features & TODO
-* Change how the moves function works
-  * Return dict saying what move is being done
-    * Regular Move
-    * Special Move
+## Future Features / TODO
 * Implement Special Moves
   * Castling
   * En Passant
   * Promote the Pawn
+    * Change how the move_piece function works
+      * Return dict saying what move is being done.
 * Check(mate)
   * Do not allow King to stay in Check
   * Do not allow King to move into Check
 * New Game
-  * Fix: Pieces on field are not removed.
+  * Bug: Pieces on field are not being removed.
 * Control Player's Turns
 * Save and Load Game Functions
 * Improve the Worth System of pieces beyond only counting the piece. 
   * I.E. Count combination of Pieces, not just the individual.
+* Proper Code Documentation
+* Create Contribution Markdown File.
 
 ## License
 This project is licensed under the terms of the MIT license.

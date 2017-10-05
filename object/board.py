@@ -87,17 +87,25 @@ class Board:
         """Called when Chess Board is Clicked"""
         my_x = int(x / dimensions["cell_width"])
         my_y = int(y / dimensions["cell_height"])
+
+        # Hud Was Clicked
         if my_y == 8:
             print('Hud pressed')
+
+        # Player Unselected a Piece
         elif self.piece_selected is not None and self.piece_selected == self.board[my_x][my_y].get_piece():
             self.valid_moves = []
             self.piece_selected = None
+
+        # Player is moving the Piece to a Valid Position
         elif self.letter_mapper[my_x] + self.number_mapper[my_y] in self.valid_moves:
             piece = self.board[self.piece_selected_pointer[0]][self.piece_selected_pointer[1]].get_piece()
             self.board[self.piece_selected_pointer[0]][self.piece_selected_pointer[1]].set_piece(None)
             self.moving_piece(piece, self.letter_mapper[my_x], self.number_mapper[my_y])
             self.piece_selected = None
             self.valid_moves = []
+
+        # Player Selected a Piece
         elif self.board[my_x][my_y].get_piece() is not None:
             self.piece_selected = self.board[my_x][my_y].get_piece()
             color_selected = self.board[my_x][my_y].get_piece().get_color()
@@ -115,6 +123,8 @@ class Board:
                         'highlighted')
                 else:
                     self.board[self.letter_converter[move[0][0]]][self.number_converter[move[0][1]]].set_state('target')
+
+        # Player Clicked the Board where no piece is located
         else:
             self.piece_selected = None
             self.hud.set_player_turn(0)
@@ -123,7 +133,10 @@ class Board:
         self.update()
 
     def update(self):
-        # Get Piece Worth
+        """
+        Updates the HUD, showing which player has the advantage
+        TODO: Improve the Worth System!
+        """
         white_worth = 0
         black_worth = 0
         for row in range(8):

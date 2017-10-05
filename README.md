@@ -61,6 +61,8 @@ There are six different pieces in Chess, and can move as follows
   * Fix: Pieces on field are not removed.
 * Control Player's Turns
 * Save and Load Game Functions
+* Improve the Worth System of pieces beyond only counting the piece. 
+  * I.E. Count combination of Pieces, not just the individual.
 
 ## License
 This project is licensed under the terms of the MIT license.

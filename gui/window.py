@@ -10,8 +10,8 @@ class Window:
         self.master = Tk.Tk()
         self.master.wm_geometry(dimensions["geometry"])
 
-        x = (self.master.winfo_screenwidth()/2) - (dimensions['width']/2)
-        y = (self.master.winfo_screenheight()/2) - (dimensions['height']/2)
+        x = (self.master.winfo_screenwidth() / 2) - (dimensions['width'] / 2)
+        y = (self.master.winfo_screenheight() / 2) - (dimensions['height'] / 2)
         self.master.geometry('+%d+%d' % (x, y))
 
         self.master.title('PyChess')
@@ -98,9 +98,9 @@ class Window:
             self.chess_board.draw()
         commands = self.get_chess_basic_commands()
         commands.append({
-                'type': 'command',
-                'label': 'Save Game',
-                'command': self.save_game_pressed
+            'type': 'command',
+            'label': 'Save Game',
+            'command': self.save_game_pressed
         })
         self.menubar.replace_menu(self.master, 'Chess', commands, 1)
 
@@ -117,7 +117,6 @@ class Window:
 
     def load_game_pressed(self):
         print("Coming Soon...")
-
 
 
 class MenuBar:
@@ -150,18 +149,20 @@ class MenuBar:
 
 
 class StartWindow(Tk.Frame):
-    def __init__(self, parent):
-        """Initialize Chess Menu"""
-        self.title = Label(parent.master, text="PyChess", font=("Helvetica", 50))
-        self.new_game_button = Button(parent.master, width=8,
-                                         text="New Game", fg="red",
-                                         command=parent.new_game_button_pressed)
-        self.load_game_button = Button(parent.master, width=8,
-                                      text="Load Game", fg="red",
-                                      command=parent.load_game_pressed)
-        self.quit_game_button = Button(parent.master, width=8,
-                                          text="Quit Game", fg="red",
-                                          command=parent.master.quit_command_pressed)
+    def __init__(self, window):
+        """Initialize Chess Menu
+        :param window: PyConsole Window
+        """
+        self.title = Label(window.master, text="PyChess", font=("Helvetica", 50))
+        self.new_game_button = Button(window.master, width=8,
+                                      text="New Game", fg="red",
+                                      command=window.new_game_button_pressed)
+        self.load_game_button = Button(window.master, width=8,
+                                       text="Load Game", fg="red",
+                                       command=window.load_game_pressed)
+        self.quit_game_button = Button(window.master, width=8,
+                                       text="Quit Game", fg="red",
+                                       command=window.master.quit_command_pressed)
         self.title.pack(pady=50)
         self.new_game_button.pack()
         self.load_game_button.pack()
@@ -194,7 +195,6 @@ class StatusBar(Tk.Frame):
 
 
 class ChessBoard:
-
     def __init__(self, master):
         """Initialize Chess Board"""
         self.canvas = Canvas(master)
@@ -228,11 +228,13 @@ class ChessBoard:
         """Get Save Data from Chess Board: Draft"""
         pass
         """
-        return self.my_board.get_save_data()"""
+        return self.my_board.get_save_data()
+        """
 
     def place_piece(self, piece_name, piece_team, piece_color, letter, number):
         """Place Piece on Board: Draft for Loading Game"""
         pass
         """
         piece = self.my_board.create_piece_with_name(piece_name, piece_color, piece_team)
-        self.my_board.place_piece(piece, letter, number)"""
+        self.my_board.place_piece(piece, letter, number)
+        """

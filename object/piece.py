@@ -150,21 +150,21 @@ class Piece:
         pass  # Overwrite in Subclass
 
     def draw(self, canvas, x, y, state, tile_color):
+        """Draw Piece to Canvas"""
         self.get_image(state, tile_color)
         canvas.create_image(x, y, image=self.image)
 
     def get_state(self, state):
+        """Get The Pieces Current state"""
         if state == 'normal':
             return 0
         elif state == 'selected':
             return 1
         elif state == 'target':
             return 2
-        else:
-            print("Error:", state)
-            return 0
 
     def get_image(self, state, tile_color):
+        """Get the Correct Image for the Pieces position on the board and state it is in"""
         color_number = 0
         if self.color == 'black':
             color_number = 2

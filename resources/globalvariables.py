@@ -1,4 +1,6 @@
 # Variables used throughout the Chess Application
+# TODO: Remove "number_of_tiles" and Declare before dimensions. This Involves finding all occurrences in PyChess Code.
+# TODO: Change integer 8 in dimensions to the var number_of_tiles
 dimensions = {
     "geometry": "602x697",
     "width": 600+2,

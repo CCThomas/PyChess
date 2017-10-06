@@ -57,6 +57,9 @@ There are six different pieces in Chess, and can move as follows
   * Do not allow King to move into Check
 * New Game
   * Bug: Pieces on field are not being removed.
+  * 1. ![Before](Bugs-Resources/New-Game/Before.png)
+  * 2. ![During](Bugs-Resources/New-Game/NewGame.png)
+  * 3. ![After](Bugs-Resources/New-Game/After.png)
 * Control Player's Turns
 * Save and Load Game Functions
 * Improve the Worth System of pieces beyond only counting the piece. 

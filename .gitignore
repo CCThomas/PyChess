@@ -1,3 +1,6 @@
 #Ignore PyCharm IDEA Folder
 .idea
 .idea/
+.idea/PyChess.iml
+.idea/misc.xml
+.idea/modules.xml

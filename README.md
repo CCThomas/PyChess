@@ -66,6 +66,8 @@ There are six different pieces in Chess, and can move as follows
   * I.E. Count combination of Pieces, not just the individual.
 * Proper Code Documentation
 * Create Contribution Markdown File.
+* Create Additional Image Resources
+  * Allow User to select SpriteSheet/Textures to Load.
 
 ## License
 This project is licensed under the terms of the MIT license.

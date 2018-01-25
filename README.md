@@ -55,7 +55,7 @@ There are six different pieces in Chess, and can move as follows
 * Check(mate)
   * Do not allow King to stay in Check
   * Do not allow King to move into Check
-* New Game
+* New Game (Update: This may have been fixed and not removed from TODO list.)
   * Bug: Pieces on field are not being removed.
   * 1. ![Before](Readme-Resources/New-Game/Before.png)
   * 2. ![During](Readme-Resources/New-Game/NewGame.png)
